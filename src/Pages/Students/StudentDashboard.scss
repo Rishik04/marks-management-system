@@ -1,0 +1,71 @@
+.student-dashboard{
+    h3{
+        font-family: 'Nunito';
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+    .title-container{
+        margin: 15px 0;
+        padding: 2px 0;
+
+        &::after{
+            content: '';
+            position: absolute;
+            width: 250px;
+            height: 3px;
+            background: gray;
+            left: 125px;
+            border-radius: 15px;
+        }
+    }
+    .wrapper{
+        margin: 20px 60px;
+        padding: 10px 60px;
+    }
+    img{
+        width: auto;
+        height: 200px;
+    }
+    .student-profile-card{
+        display: flex;
+        flex-direction: column;
+    }
+    .student-detail-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 5px 8px rgba(0, 0, 0, 0.137);
+        padding: 10px 15px;
+        border-radius: 15px;
+        margin: 15px 0;
+        // width: 80%;
+
+        .left{
+            p{
+                font-family: 'Nunito';
+                font-weight: 500;
+                color: gray;
+                span{
+                    color: #000;
+                    font-size: 20px;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        button{
+            border: none;
+            outline: none;
+            background-color: #FF8400;
+            padding: 8px 22px;
+            color: #fff;
+            border-radius: 20px;
+            font-family: 'Nunito';
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+        }
+    }
+}
+

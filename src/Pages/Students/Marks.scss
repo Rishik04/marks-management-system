@@ -1,0 +1,125 @@
+.student-marks {
+  h3 {
+    font-family: "Nunito";
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .title-container {
+    margin: 15px 0;
+    padding: 2px 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 3px;
+      background: gray;
+      left: 125px;
+      border-radius: 15px;
+      transition: .2s ease;
+    }
+  }
+
+  .student-perfomance{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px 0;
+    border-radius: 15px;
+    box-shadow: 0 5px 8px rgba(0,0,0,.1);
+    padding: 20px;
+    height: 150px;
+    background: #F8F6F4;
+
+    .marksOne{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .marks-desc{
+        display: flex;
+        justify-content: space-between;
+        margin: 15px 0;
+        p{
+            font-size: 18px;
+            font-weight: 600;
+            font-family: 'Nunito';
+            margin: 8px 0;
+
+            span{
+                font-weight: 700;
+                font-size: 20px;
+            }
+        }
+    }
+
+    label{
+        flex: 1;
+        font-size: 25px;
+        font-weight: 700;
+        font-family: 'Nunito';
+        text-transform: uppercase;
+    }
+    progress{
+      width: 100%;
+      height: 18px;
+      flex: 2;
+      background: #fff;
+
+      &::-webkit-progress-bar{
+        background: #e5e5e5;
+        box-shadow: inset 0 2px 6px rgba(0,0,0,.1);
+        border-radius: 8px;
+      }
+
+      &::-webkit-progress-value{
+        background: #181D31;
+        border-radius: 8px;
+      }
+
+    }
+  }
+
+}
+
+.wrapper{
+    margin: 20px 60px;
+    padding: 10px 60px;
+}
+
+
+//student report
+
+.chart{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+
+    .chart-desc{
+        h4{
+            font-size: 20px;
+            font-weight: 500;
+            font-family: 'Nunito';
+        }
+    }
+    .chart-doughnut{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        p{
+            font-size: 18px;
+            font-weight: 600;
+        }
+        canvas{
+            width: 500px !important;
+            height: 500px !important;
+        }
+    }
+}
+

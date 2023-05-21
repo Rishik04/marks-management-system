@@ -1,0 +1,31 @@
+  .card {
+    width: 250px;
+    height: 220px;
+    padding: 10px;
+    border-radius: 10px;
+    transition: 0.4s ease;
+    cursor: pointer;
+    box-shadow: 0 5px 8px rgba(76, 51, 191, 0.3);
+    color: #f6f1f1;
+    &:hover {
+      transition: 0.4s ease;
+      transform: scale(1.1);
+    }
+
+    h5 {
+      font-size: 20px;
+      font-weight: 500;
+      margin: 15px auto;
+    }
+
+    span {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .enrolled {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }

@@ -1,0 +1,14 @@
+.dashboard {
+  .Container {
+    .totalSubjects {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .details {
+      h5:first-child{
+        font-size: 16px;
+      }
+    }
+  }
+}

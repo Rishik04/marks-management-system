@@ -1,0 +1,75 @@
+.subject-card-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.subject-card {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  margin: 10px;
+  width: 350px;
+  height: 120px;
+  cursor: pointer;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  transition: 0.4s ease;
+  background: #ebb02d url("../../../public/assets/images/abstract.png");
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+
+  &:nth-child(2n) {
+    background: #f97b22 url("../../../public/assets/images/abstract.png");
+    background-position: center;
+    background-size: cover;
+  }
+
+  &:nth-child(3n) {
+    background: #ff6000 url("../../../public/assets/images/abstract.png");
+    background-size: cover;
+    background-position: center;
+  }
+
+  &:hover {
+    transform: scale(1.02);
+    transition: 0.4s ease;
+  }
+
+  .subject-details {
+    width: 100%;
+    .subject-title {
+      padding-top: 15px;
+      font-size: 18px;
+      font-family: "Nunito";
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+  }
+
+  .subject-desc {
+    display: flex;
+    justify-content: space-between;
+    p {
+      margin: 10px 0;
+      font-weight: 600;
+      font-family: 'Nunito';
+    }
+  }
+}
+
+.button-container {
+  button {
+    outline: none;
+    border: none;
+    background: #fff;
+    color: #f97b22;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: "Nunito";
+    cursor: pointer;
+  }
+}
