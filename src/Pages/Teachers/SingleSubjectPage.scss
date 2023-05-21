@@ -1,0 +1,16 @@
+.paper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+        width: auto;
+        height: 400px;
+    }
+    h3{
+        font-family: 'Nunito';
+        font-weight: 600;
+        font-size: 25px;
+        text-transform: uppercase;
+        color: gray;
+    }
+}

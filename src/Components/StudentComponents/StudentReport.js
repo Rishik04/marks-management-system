@@ -1,5 +1,14 @@
-import { Doughnut } from "react-chartjs-2";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Bar, Doughnut } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  ArcElement,
+  Tooltip,
+  Legend,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+} from "chart.js";
 
 const StudentReport = ({ totalmark, subject }) => {
   const colors = [
@@ -11,7 +20,16 @@ const StudentReport = ({ totalmark, subject }) => {
     "#654E92",
   ];
 
-  ChartJS.register(ArcElement, Tooltip, Legend);
+  ChartJS.register(
+    ArcElement,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+  );
+
   const subjectNames = subject.map((s) => s.name);
   const marks = [];
   subject.forEach((s) => {
@@ -28,6 +46,29 @@ const StudentReport = ({ totalmark, subject }) => {
         backgroundColor: colors,
         borderColor: "#fff",
         borderWidth: 10,
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: "OVER ALL CLASS PERFOMANCE",
+      },
+    },
+  };
+
+  const labels = ["Average Perfomance", "Your Perfomance", "Highest Perfomance"];
+  const bar = [50, 32, 85];
+  const barData = {
+    labels: labels,
+    datasets: [
+      {
+        label: "Marks",
+        data: bar,
+        backgroundColor: colors,
       },
     ],
   };
@@ -52,9 +93,17 @@ const StudentReport = ({ totalmark, subject }) => {
             educational programs and policies.
           </h4>
         </div>
-        <div className="chart-doughnut">
-          <Doughnut data={data} />
-          <p>Overall Perfomance: {((totalmark / (subject.length * 25)) * 100).toFixed(2)}%</p>
+        <div className="chart-All">
+          <div className="chart-doughnut">
+            <Doughnut data={data} options={{plugins: {title:{display: true, text: "YOUR PERFOMANCE"}}}}/>
+            <p>
+              Overall Perfomance:{" "}
+              {((totalmark / (subject.length * 25)) * 100).toFixed(2)}%
+            </p>
+          </div>
+          <div className="chart-bar">
+            <Bar data={barData} options={options} />
+          </div>
         </div>
       </div>
     </div>

@@ -22,6 +22,10 @@ teacherRouter.get('/subjectStudent', isTeacher, teacherController.getSubject);
 teacherRouter.get('/subject', isTeacher, teacherController.subjectStudent)
 
 
+//get subject by id
+teacherRouter.get('/get-subject/:id', teacherController.getSub)
+
+
 export default teacherRouter;
 
 

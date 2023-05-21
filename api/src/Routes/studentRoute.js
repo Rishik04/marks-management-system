@@ -10,14 +10,14 @@ studentRouter.post('/register', studentController.register);
 studentRouter.post('/login', studentController.login);
 
 //get request
-studentRouter.get('/', studentController.getDetails);
+// studentRouter.get('/', studentController.getDetails);
 studentRouter.post('/logout', auth, studentController.logout);
 
 
 
 
 
-//get student by dept & year
+//get student by dept & year used by teacher
 studentRouter.get('/get-student', studentController.getStudentById)
 
 //get subject by id

@@ -16,11 +16,13 @@
       font-size: 20px;
       font-weight: 500;
       margin: 15px auto;
+      text-transform: uppercase;
     }
 
     span {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
+      margin: 10px 0;
     }
 
     .enrolled {
@@ -28,4 +30,13 @@
       align-items: center;
       justify-content: space-between;
     }
+  }
+
+  .year{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .subjectCard{
+    margin: 10px;
   }

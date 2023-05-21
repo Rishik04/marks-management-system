@@ -24,7 +24,7 @@ export const register = async (req, res) => {
           //   status: 200,
           // });
 
-          res.redirect('/')
+          res.redirect("/");
         }
       }
     );
@@ -76,18 +76,17 @@ export const login = async (req, res) => {
   }
 };
 
-export const logout = async(req, res)=>{
-  try{
+export const logout = async (req, res) => {
+  try {
     res.clearCookie("access_token");
-    res.redirect('/');
-  }
-  catch (error) {
+    res.redirect("/");
+  } catch (error) {
     return res.send({
       error: { message: error.message, name: error.name },
       status: 400,
     });
   }
-}
+};
 
 export const getDetails = async (req, res) => {
   try {
@@ -95,8 +94,17 @@ export const getDetails = async (req, res) => {
       .findOne({ _id: req.params.id }, { password: 0 })
       .populate("subjects", "year")
       .exec();
-    res.send({ message: "Successfully Fetched", data: getTeacher, status: 200,
-    });
+
+    const getSubject = await subjectModel.find({ teacher: req.params.id });
+
+    if (getSubject) {
+      // console.log(getSubject)
+      res.send({
+        message: "Successfully Fetched",
+        teacher: getTeacher, subject: getSubject,
+        status: 200,
+      });
+    }
   } catch (error) {
     return res.send({
       error: { message: error.message, name: error.name },
@@ -111,10 +119,9 @@ export const getStudent = async (req, res) => {
     // console.log(id);
     const getStudents = await teacherModel.aggregate([
       {
-        $match:
-        {
-          _id: new mongoose.Types.ObjectId(id)
-        } 
+        $match: {
+          _id: new mongoose.Types.ObjectId(id),
+        },
       },
       {
         $lookup: {
@@ -125,26 +132,26 @@ export const getStudent = async (req, res) => {
         },
       },
       {
-        $project:{
+        $project: {
           name: 1,
           department: 1,
           subjects: 1,
-          students:{
+          students: {
             _id: 1,
-            name:1,
+            name: 1,
             department: 1,
-            semester:1,
+            semester: 1,
           },
-          role: 1
-        }
+          role: 1,
+        },
       },
     ]);
 
-    const subject = getStudents[0].subjects
-    
-    const subjects = await subjectModel.find({_id: {$in: subject}})
+    const subject = getStudents[0].subjects;
 
-    Object.assign(getStudents[0], {subjects: subjects});
+    const subjects = await subjectModel.find({ _id: { $in: subject } });
+
+    Object.assign(getStudents[0], { subjects: subjects });
 
     if (!getStudents) {
       res.send({
@@ -152,7 +159,6 @@ export const getStudent = async (req, res) => {
         status: 400,
       });
     } else {
-
       // after teacher login
       // return res.send({
       //   Success: {
@@ -163,7 +169,7 @@ export const getStudent = async (req, res) => {
       //   status: 200,
       // });
 
-      res.render('teacher', {data: getStudents, subject: subjects})
+      res.render("teacher", { data: getStudents, subject: subjects });
     }
   } catch (error) {
     return res.send({
@@ -173,93 +179,113 @@ export const getStudent = async (req, res) => {
   }
 };
 
-export const addMarks = async (req, res)=>{
-  try{
+export const addMarks = async (req, res) => {
+  try {
     const data = await marksModel(req.body).save();
-    if(!data)
-    {
+    if (!data) {
       return res.send({
         error: { message: error.message, name: error.name },
         status: 400,
       });
-    }
-    else{
+    } else {
       console.log(data);
-      const addToStudent = await studentModel.findOneAndUpdate({_id: req.body.student,}, {$push:{marks: data}});
+      const addToStudent = await studentModel.findOneAndUpdate(
+        { _id: req.body.student },
+        { $push: { marks: data } }
+      );
       console.log(addToStudent);
-      return res.send({"Success":{"Message": "Successfully added the marks", "data": addToStudent}})
+      return res.send({
+        Success: {
+          Message: "Successfully added the marks",
+          data: addToStudent,
+        },
+      });
     }
-  }
-  catch(error)
-  {
+  } catch (error) {
     return res.send({
       error: { message: error.message, name: error.name },
       status: 400,
     });
   }
-}
+};
 
-
-export const getSubject = async (req, res)=>{
-  try{    
+export const getSubject = async (req, res) => {
+  try {
     const student = await subjectModel.aggregate([
       {
         $match: {
-          _id: new mongoose.Types.ObjectId(req.query)
-        }
+          _id: new mongoose.Types.ObjectId(req.query),
+        },
       },
       {
-        $lookup:{
-          from: 'students',
-          
-          let: {'dept': '$department', 'sem': '$semester'},
+        $lookup: {
+          from: "students",
 
-          pipeline:[{
-            $match:{
-            $expr:{
-              $and:[{
-                $eq:['$department', '$$dept']},
-                {$eq:['$semester', '$$sem']}
-              ]
-            }
-          },
-          
-          },{
-            $project:{
-              password: 0,
-              email: 0,
-              year: 0
-            }
-          }],
+          let: { dept: "$department", sem: "$semester" },
 
-          as: 'students'
-        }
-      }
-    ])
-    res.send({'Success': {'message': 'Successfully Fetched', data: student}})
-    console.log(student)
-  }
-  catch(error)
-  {
+          pipeline: [
+            {
+              $match: {
+                $expr: {
+                  $and: [
+                    {
+                      $eq: ["$department", "$$dept"],
+                    },
+                    { $eq: ["$semester", "$$sem"] },
+                  ],
+                },
+              },
+            },
+            {
+              $project: {
+                password: 0,
+                email: 0,
+                year: 0,
+              },
+            },
+          ],
+
+          as: "students",
+        },
+      },
+    ]);
+    res.send({ Success: { message: "Successfully Fetched", data: student } });
+    console.log(student);
+  } catch (error) {
     return res.send({
       error: { message: error.message, name: error.name },
       status: 400,
     });
   }
-}
+};
 
-
-
-export const subjectStudent = async(req, res)=>{
-  try{
-    console.log()
-    res.render('subjectStudent')
-  }
-  catch(error)
-  {
+export const subjectStudent = async (req, res) => {
+  try {
+    console.log();
+    res.render("subjectStudent");
+  } catch (error) {
     return res.send({
       error: { message: error.message, name: error.name },
-      status: 400, 
-  })
-}
+      status: 400,
+    });
+  }
+};
+
+
+//get subject by id
+
+//get subject by id
+export const getSub = async (req, res)=>{
+  try{
+    const getDetails = await subjectModel.findOne({_id: req.params.id});
+    if(getDetails){
+      res.send({data: getDetails, status: 200})
+    }
+    else{
+      console.log(getDetails);
+    }
+  }
+  catch(err){
+    console.log(err);
+  }
 }

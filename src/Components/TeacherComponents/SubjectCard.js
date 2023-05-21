@@ -6,19 +6,21 @@ const SubjectCard = ({ bg, subject }) => {
     const path = useLocation().pathname.split("/")[2];
   return (
     <div className="subjectCard">
-      <NavLink to={ path === "subjects" ? `${subject}` : `subjects/${subject}`} style={{textDecoration: "none"}}>
+      <NavLink to={ path === "subjects" ? `${subject}` : `subjects/${subject._id}`} style={{textDecoration: "none"}}>
         <div className="card" style={{ background: bg }}>
           <span>
             <Psychology />
           </span>
-          <h5>{subject}</h5>
-          <span>Januray - June</span>
+          <h5>{subject.name}</h5>
           <div className="year">
             <span>
-              3<sup>rd</sup> Year{" "}
+              {subject.year}<sup>rd</sup> Year{" "}
             </span>
             <span>
-              6<sup>th</sup> Semester{" "}
+              {subject.semester}<sup>th</sup> Semester{" "}
+            </span>
+            <span>
+              {subject.department}
             </span>
           </div>
           <hr />

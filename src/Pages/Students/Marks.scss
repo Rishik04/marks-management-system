@@ -106,8 +106,20 @@
             font-family: 'Nunito';
         }
     }
+
+    .chart-All{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+    }
+    .chart-bar{
+        flex: 1;
+        width: 100%;
+    }
     .chart-doughnut{
         width: 100%;
+        flex: 1;
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -116,10 +128,11 @@
             font-size: 18px;
             font-weight: 600;
         }
-        canvas{
-            width: 500px !important;
-            height: 500px !important;
-        }
+        // canvas{
+        //     width: 500px !important;
+        //     height: 500px !important;
+        // }
     }
 }
+
 

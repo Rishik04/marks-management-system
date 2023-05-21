@@ -10,7 +10,7 @@ const StudentDashboard = () => {
   useEffect(() => {
     const getDetails = async ()=>{
       try{
-        const students = await axios.get(`http://localhost:5000/student/646730a5bd1c1595e4ecc469`);
+        const students = await axios.get(`http://localhost:5000/student/6469f02a5b6612b8ca658b15`);
         if(students){
             console.log(students)
           setStudent(students.data.data)

@@ -30,7 +30,7 @@ const Marks = () => {
     const getMarks = async () => {
       try {
         const getMarks = await axios.get(
-          `http://localhost:5000/student/get-marks/646730a5bd1c1595e4ecc469`
+          `http://localhost:5000/student/get-marks/6469f02a5b6612b8ca658b15`
         );
         if (getMarks.data.status === 200 && getMarks.data.data.length !== 0) {
           setMarksCard(getMarks.data.data);
@@ -86,7 +86,38 @@ const Marks = () => {
                   </div>
                 </>
               ))
-            : "Loading"}
+            : 
+            <div className="student-perfomance">
+                    <div className="marksOne">
+                    <label>Subject Name</label>
+                      <progress
+                        id="marks"
+                        value="0"
+                        max="25"
+                      ></progress>
+                    </div>
+                    <div className="marks-desc">
+                      <p>
+                        <AssessmentOutlined
+                          style={{ verticalAlign: "text-bottom" }}
+                        />{" "}
+                        Total Marks Obtained: <span>NA</span>
+                      </p>
+                      <p>
+                        <SupervisedUserCircle
+                          style={{ verticalAlign: "text-bottom" }}
+                        />{" "}
+                        Teacher Assigned: <span>NA</span>
+                      </p>
+                      <p>
+                        <SummarizeOutlined
+                          style={{ verticalAlign: "text-bottom" }}
+                        />{" "}
+                        Total Marks: <span>25</span>
+                      </p>
+                    </div>
+                  </div>
+            }
 
           <StudentReport totalmark={totalmarks} subject={allSubject} />
         </div>

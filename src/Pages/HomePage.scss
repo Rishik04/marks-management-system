@@ -1,0 +1,58 @@
+.main-header{
+    background: #25316D;
+    display: flex;
+    padding: 5px 15px;
+    justify-content: space-between;
+    align-items: center;
+    img{
+        width: 80px;
+        height: 80px;
+    }
+}
+
+.header-left{
+    padding: 5px;
+    background: #fff;
+}
+
+.header-right{
+    h4{
+        margin: 2px;
+        color: #fff;
+        font-size: 12px;
+        text-align: center;
+        font-weight: 400;
+    }
+}
+
+.header-center{
+    color: #fff;
+    h2{
+        margin: 8px;
+    }
+}
+
+.right-logo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background: #fff;
+}
+
+.home-page{
+    background: url("https://img.freepik.com/free-vector/flat-design-polygonal-background_23-2148900723.jpg?w=996&t=st=1684703532~exp=1684704132~hmac=3379eb25330d0bd84362e01f9faab899bfc25e2501ab0e656481dcb6e15d449c");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    .wrapper{
+        background: #fff;
+        padding: 10px;
+        border-radius: 15px;
+        height: 300px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

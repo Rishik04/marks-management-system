@@ -197,14 +197,12 @@ export const logout = async(req, res)=>{
 
 
 
-//get by the subject name
+//get by the subject name by teacher
 export const getStudentById = async(req, res)=>{
   try{
-    const {dept, year} = req.query;
-    const userList = await studentModel.find({year: year, department: dept})
+    const {dept, year, sem, sub} = req.query;
+    const userList = await studentModel.find({year: year, department: dept, semester: sem}).populate("marks")
     if(userList.length!==0){
-      // console.log(userList);
-      // const getMarks = await marksModel.find({id: user})
       res.send({data: userList, status: 200});
     }
     else{
@@ -212,7 +210,7 @@ export const getStudentById = async(req, res)=>{
     }
   }
   catch(error){
-    res.send("error");
+    res.send(error);
   }
 }
 
@@ -262,7 +260,7 @@ export const getAllSubject = async (req, res)=>{
 export const getDetailsById = async (req, res)=>{
   try{
     const details = await studentModel.findOne({_id: req.params.id});
-
+    console.log(details)
     if(details){
       res.send({data: details, status: 200});
     }

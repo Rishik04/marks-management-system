@@ -3,10 +3,12 @@
     justify-content: space-around;
     align-items: center;
     gap: 10px;
+    background: #27374D;
 }
 
 .logo{
     flex: 1;
+    color: #fff;
 
     h6{
         display: flex;
@@ -32,11 +34,12 @@
 
 
 .userNavBar{
-    flex: .5;
+    flex: 1;
     .userProfile{
+        color: #fff;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 5px;
         img{
             height: 30px;
             width: 30px;

@@ -100,28 +100,24 @@
     }
 
     form{
-      width: 100%;
-
       .marks-container{
-        display: flex;
-        justify-content: space-between;
-
+        width: 100%;
         input{
           padding: 5px;
           width: 100%;
           outline: none;
           border: none;
         }
-        button{
-          background: #e5e5e5;
-          border: none;
-          outline: none;
-          padding: 5px;
-          font-weight: 500;
-          font-size: 15px;
-          color: #000;
         }
       }
     }
+    button{
+      background: #e5e5e5;
+      border: none;
+      outline: none;
+      padding: 5px;
+      font-weight: 500;
+      font-size: 15px;
+      color: #000;
   }
 }

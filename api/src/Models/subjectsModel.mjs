@@ -17,6 +17,11 @@ const subjectSchema = new Schema({
     department: {
         type: String,
         required: true
+    },
+    teacher:{
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: 'teachers'
     }
 
 });
