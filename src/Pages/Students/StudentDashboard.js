@@ -3,14 +3,19 @@ import StudentHeader from "../../Components/StudentComponents/StudentHeader";
 import "./StudentDashboard.scss";
 import StudentSubject from "../../Components/StudentComponents/StudentSubject";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const StudentDashboard = () => {
-
+  const id = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")).id : "";
     const [student, setStudent] = useState({});
+    const nav = useNavigate();
   useEffect(() => {
     const getDetails = async ()=>{
+      if(!localStorage.getItem("user")){
+        nav("/");
+      }
       try{
-        const students = await axios.get(`http://localhost:5000/student/6469f02a5b6612b8ca658b15`);
+        const students = await axios.get(`http://localhost:5000/student/${id}`);
         if(students){
             console.log(students)
           setStudent(students.data.data)
@@ -24,7 +29,7 @@ const StudentDashboard = () => {
       }
     };
     getDetails();
-  }, [])
+  }, [nav])
 
   return (
     <div className="student-dashboard">

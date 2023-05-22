@@ -51,7 +51,7 @@ export const login = async (req, res) => {
           studentList.toJSON(),
           process.env.AUTH_SECRET_KEY
         );
-        res.cookie("access_token", token, { httponly: true });
+        // res.cookie("access_token", token, { httponly: true });
 
         // return res.send('/',{
         //   Success: { message: "Successfully Logged In", data: studentList },
@@ -59,7 +59,7 @@ export const login = async (req, res) => {
         // });
         //render method goes here after success login
 
-        res.redirect("/student");
+        res.send({data: {id: studentList._id, name: studentList.name}, status: 200});
       } else {
         return res.send({
           error: { message: "Incorrect Password or Email" },

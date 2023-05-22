@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import "../TeacherComponents/TeacherHeader.scss";
 import "./StudentHeader.scss";
 import { Logout } from "@mui/icons-material";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const StudentHeader = () => {
-
+  const nav = useNavigate();
+  const id = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")).id : "";
     const [student, setStudent] = useState({});
     useEffect(() => {
       const getDetails = async ()=>{
         try{
-          const students = await axios.get(`http://localhost:5000/student/6469f02a5b6612b8ca658b15`);
+          const students = await axios.get(`http://localhost:5000/student/${id}`);
           if(students){
             setStudent(students.data.data)
           }
@@ -24,7 +25,12 @@ const StudentHeader = () => {
         }
       };
       getDetails();
-    }, [])
+    }, []);
+
+    const logout = ()=>{
+      localStorage.removeItem("user");
+      nav("/");
+    }
 
 
   return (
@@ -56,7 +62,7 @@ const StudentHeader = () => {
               />
             </div>
             <span>{student ? student.name : "Loading"}</span>
-            <div className="logoutButton">
+            <div className="logoutButton" onClick={logout} style={{cursor: "pointer"}}>
               <Logout />
             </div>
           </div>

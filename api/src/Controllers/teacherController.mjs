@@ -19,12 +19,12 @@ export const register = async (req, res) => {
       (err, token) => {
         if (err) return res.send({ error: err, status: 400 });
         else {
-          // return res.send({
-          //   data: { token: token, msg: "Successfully Registered" },
-          //   status: 200,
-          // });
+          return res.send({
+            data: { token: token, message: "Successfully Registered" },
+            status: 200,
+          });
 
-          res.redirect("/");
+          // res.redirect("/");
         }
       }
     );
@@ -51,16 +51,14 @@ export const login = async (req, res) => {
           teacherList.toJSON(),
           process.env.AUTH_SECRET_KEY
         );
-        res.cookie("access_token", token, { httponly: true });
 
-        // return res.send('/',{
-        //   Success: { message: "Successfully Logged In", data: studentList },
-        //   status: 200,
-        // });
+        return res.send({
+          data: { message: "Successfully Logged In", data: {id: teacherList._id, name: teacherList.name} },
+          status: 200,
+        });
 
         //render method goes here after success login
 
-        res.redirect("/teacher");
       } else {
         return res.send({
           error: { message: "Incorrect Password or Email" },

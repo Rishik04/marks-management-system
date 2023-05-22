@@ -26,11 +26,12 @@ const Marks = () => {
       : [];
   console.log(totalmarks);
 
+  const id = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")).id : "";
   useEffect(() => {
     const getMarks = async () => {
       try {
         const getMarks = await axios.get(
-          `http://localhost:5000/student/get-marks/6469f02a5b6612b8ca658b15`
+          `http://localhost:5000/student/get-marks/${id}`
         );
         if (getMarks.data.status === 200 && getMarks.data.data.length !== 0) {
           setMarksCard(getMarks.data.data);

@@ -45,14 +45,111 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
     .wrapper{
-        background: #fff;
-        padding: 10px;
+        background: #ECF9FF;
+        padding: 15px;
         border-radius: 15px;
-        height: 300px;
         display: flex;
+        min-height: 400px;
         justify-content: space-between;
         align-items: center;
+        box-shadow: 0 5px 8px rgba(0,0,0,.2);
+    }
+
+    .button-container{
+        margin-top: 12px;
+    }
+    button{
+        border: 2px solid #FFB100;
+        border-radius: 25px;
+        margin: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        font-family: 'Nunito';
+        background: #FFB100;
+        color: #fff;
+
+        &:hover{
+            background: #fff;
+            color: #FFB100;
+            transition: .4s ease;
+        }
+    }
+
+    .home-right{
+        img{
+            width: 400px;
+            height: 100%;
+            mix-blend-mode: multiply;
+        }
+    }
+    .home-left{
+        p{
+            font-size: 16px;
+            font-weight: 300;
+            font-family: 'Nunito';
+            margin: 5px 0;
+            color: gray;
+        }
+        
+    }
+
+    .home-footer{
+        background: #FFFBEB;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+        padding: 10px;
+        border-radius: 20px;
+
+        img{
+            width: 120px;
+            height: 120px;
+        }
+    }
+
+    .Container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0;
     }
 }
+
+
+.form-container{
+    display: flex;
+    flex-wrap: wrap;
+
+    .form-name{
+        margin: 15px;
+        flex-grow: 2;
+        label{
+            font-family: 'Nunito';
+            font-size: 16px;
+            font-weight: 600;
+            margin: 10px 5px;
+        }
+
+        input{
+            width: 100%;
+            border: none;
+            outline: none;
+            background-color: #fff;
+            padding: 10px;
+            box-shadow: inset 0 1px 5px rgba(0,0,0,.1);
+        }
+    }
+}
+
+.student-login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
