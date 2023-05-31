@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import "./SubjectSubPage.scss";
 import axios from "axios";
 import {useForm} from 'react-hook-form'
+import UploadQuestion from "./UploadQuestion";
 
-const teacherId = "6469f54f0dbe71380ebc022f";
+const teacherId = localStorage.getItem("teacher") ? JSON.parse(localStorage.getItem("teacher")).data.id : "";
+console.log(teacherId)
 const SubjectSubPage = ({sem, year, dept,subject}) => {
   const [show, setShow] = useState(false);
   const [user, setUser] = useState([]);
@@ -14,6 +16,7 @@ const SubjectSubPage = ({sem, year, dept,subject}) => {
     for(const key in data){
       const id = key.split("-")[1];
       const formData = {"student": id, teacher: teacherId, marks: data[`marks-${id}`], subject};
+      console.log(formData);
 
       const addMarks = await axios.post('http://localhost:5000/teacher/addmarks', formData);
       console.log(addMarks); 
@@ -67,6 +70,7 @@ const SubjectSubPage = ({sem, year, dept,subject}) => {
           </div>
         </div>
       </div>
+      <UploadQuestion />
       {show && user.length !== 0 ? (
         <div className="studentsDetails" key={user._id}>
           <div className="table-container">

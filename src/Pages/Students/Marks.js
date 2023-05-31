@@ -33,6 +33,7 @@ const Marks = () => {
         const getMarks = await axios.get(
           `http://localhost:5000/student/get-marks/${id}`
         );
+        console.log(getMarks)
         if (getMarks.data.status === 200 && getMarks.data.data.length !== 0) {
           setMarksCard(getMarks.data.data);
         }

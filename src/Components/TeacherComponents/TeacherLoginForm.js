@@ -57,7 +57,7 @@ const TeacherLoginForm = () => {
         <p style={{background: "#fff", padding: 5}}>{res}</p>
 
         {login === "login" ? <form onSubmit={handleSubmit(onSubmitLogin)}>
-        <h2>STUDENT LOGIN</h2>
+        <h2>TEACHER LOGIN</h2>
           <div className="form-container">
             <div className="form-name">
               <label htmlFor="email">Email</label>
@@ -75,7 +75,7 @@ const TeacherLoginForm = () => {
         </form>  :
         
         <form onSubmit={handleSubmit(onSubmit)}>
-        <h2>STUDENT REGISTER</h2>
+        <h2>TEACHER REGISTER</h2>
           <div className="form-container">
             <div className="form-name">
               <label htmlFor="name">Name</label>

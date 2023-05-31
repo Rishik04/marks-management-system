@@ -10,10 +10,10 @@ const StudentDashboard = () => {
     const [student, setStudent] = useState({});
     const nav = useNavigate();
   useEffect(() => {
+    if(!localStorage.getItem("user")){
+      nav("/");
+    }
     const getDetails = async ()=>{
-      if(!localStorage.getItem("user")){
-        nav("/");
-      }
       try{
         const students = await axios.get(`http://localhost:5000/student/${id}`);
         if(students){

@@ -6,7 +6,7 @@ import TeacherLoginForm from "../Components/TeacherComponents/TeacherLoginForm";
 import { ArrowBack } from "@mui/icons-material";
 
 export const HomePage = () => {
-  const [type, setType] = useState("");
+  const [type, setType] = useState("home");
 
   const handleClick = (data) =>{
     const id = data.target.id;
